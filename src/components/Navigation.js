@@ -20,7 +20,7 @@ const Navigation = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
     <nav>
-      <NavLink to="/" exact style={styles.link} activeStyle={styles.activeLink}>
+      <NavLink to="/" style={styles.link} activestyle={styles.activeLink}>
         Главная
       </NavLink>
 
@@ -28,17 +28,15 @@ const Navigation = () => {
         <>
           <NavLink
             to="/todos"
-            exact
             style={styles.link}
-            activeStyle={styles.activeLink}
+            activestyle={styles.activeLink}
           >
             Заметки
           </NavLink>
           <NavLink
             to="/upload"
-            exact
             style={styles.link}
-            activeStyle={styles.activeLink}
+            activestyle={styles.activeLink}
           >
             Загрузить
           </NavLink>

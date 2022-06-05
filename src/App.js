@@ -1,10 +1,10 @@
 import { useEffect, Suspense, lazy } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Switch } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import AppBar from './components/AppBar';
 import Container from './components/Container';
-import PrivateRoute from './components/PrivateRoute';
-import PublicRoute from './components/PublicRoute';
+// import PrivateRoute from './components/PrivateRoute';
+// import PublicRoute from './components/PublicRoute';
 import { authOperations, authSelectors } from './redux/auth';
 
 const HomeView = lazy(() => import('./views/HomeView'));
@@ -28,25 +28,28 @@ export default function App() {
       ) : (
         <>
           <AppBar />
-          <Switch>
-            <Suspense fallback={<p>Загружаем...</p>}>
-              <PublicRoute exact path="/">
-                <HomeView />
-              </PublicRoute>
-              <PublicRoute exact path="/register" restricted>
-                <RegisterView />
-              </PublicRoute>
-              <PublicRoute exact path="/login" redirectTo="/todos" restricted>
-                <LoginView />
-              </PublicRoute>
-              <PrivateRoute path="/todos" redirectTo="/login">
-                <TodosView />
-              </PrivateRoute>
-              <PrivateRoute path="/upload" redirectTo="/login">
-                <UploadView />
-              </PrivateRoute>
-            </Suspense>
-          </Switch>
+          <Suspense fallback={<p>Загружаем...</p>}>
+            <Routes>
+              <Route path="/" element={<HomeView />} />
+              <Route path="/register" restricted element={<RegisterView />} />
+              <Route
+                path="/login"
+                redirectTo="/todos"
+                restricted
+                element={<LoginView />}
+              />
+              <Route
+                path="/todos"
+                redirectTo="/login"
+                element={<TodosView />}
+              />
+              <Route
+                path="/upload"
+                redirectTo="/login"
+                element={<UploadView />}
+              />
+            </Routes>
+          </Suspense>
         </>
       )}
     </Container>
