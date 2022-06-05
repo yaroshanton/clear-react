@@ -27,13 +27,6 @@ const Navigation = () => {
       {isLoggedIn && (
         <>
           <NavLink
-            to="/todos"
-            style={styles.link}
-            activestyle={styles.activeLink}
-          >
-            Заметки
-          </NavLink>
-          <NavLink
             to="/upload"
             style={styles.link}
             activestyle={styles.activeLink}

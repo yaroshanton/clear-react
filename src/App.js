@@ -10,7 +10,6 @@ import { authOperations, authSelectors } from './redux/auth';
 const HomeView = lazy(() => import('./views/HomeView'));
 const RegisterView = lazy(() => import('./views/RegisterView'));
 const LoginView = lazy(() => import('./views/LoginView'));
-const TodosView = lazy(() => import('./views/TodosView'));
 const UploadView = lazy(() => import('./views/UploadView'));
 
 export default function App() {
@@ -37,11 +36,6 @@ export default function App() {
                 redirectTo="/todos"
                 restricted
                 element={<LoginView />}
-              />
-              <Route
-                path="/todos"
-                redirectTo="/login"
-                element={<TodosView />}
               />
               <Route
                 path="/upload"
